@@ -1,0 +1,27 @@
+                 --Module python a installer--
+===================================================
+1-bs4                      ex: pip install bs4
+2-Pillow                   ex: pip install pillow
+3-numpy                    ex: pip install numpy
+4-reportlab                ex: pip install reportlab
+5-tkcalendar               ex: pip install tkcalendar==1.6.1
+6-pyinstaller              ex: pip install PyInstaller==3.6
+7-pymysql                  ex: pip install pymysql
+8-Pygame                   ex: pip install pygame==1.9.6 
+9-xlrd                     ex: pip install xlrd
+10-matplotlib              ex: pip install matplotlib
+11-xlwt                    ex: pip install xlwt
+12-pystray                 ex: pip install pystray
+13-win10toast              ex: pip install win10toast
+14-opencv                  ex: pip install opencv-python *
+15-flask                   ex: pip install flask
+16-flask_wtf               ex: pip install flask_wtf
+17-wtforms                 ex: pip install wtforms
+18-flask-bootstrap         ex: pip install Flask-Bootstrap
+19-flask-assets            ex: pip install flask_assets
+20-flask-mysqldb           ex: pip install flask-mysqldb
+21-pyqt5                   ex: pip install pyqt5                explication: autre bibliotheque pour creer interface graphique
+22-pyro                    ex: pip install pyro4                explication: il fonctionne tout comma RMI de java, ou TCPChannel de C#, il permet de faire appel a l'objet distant d'une methode.
+23-                            pip install translate-pdf-word
+24-                            pip install spyder ide dev python
+python -m Pyro4.naming pour voir comment utiliser le nom du serveur

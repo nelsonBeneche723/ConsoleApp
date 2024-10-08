@@ -1,0 +1,13 @@
+Triage en python: le triage se fait soit dans une liste de chaine ou dans une liste de nombres entiers:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+1-sorted ou sort---------------------------------------------------
+etudiant=['Nelson','Alina','Nelly','Alina']
+ex: etudiant.sort()
+ex:sorted(etudiant)
+print(etudiant)
+ex: resultat=['Alina', 'Aline', 'Nelly', 'Nelson'] 
+2-lambda-----------------------------------------------------------
+colonne=lambda x: etudiant[1] #on utilise le methode lambda
+x represente l'argument.
+resultat: print(colonne)
+colonne('')
+'Aline'

@@ -1,0 +1,84 @@
+import sys
+import cPickle as pickle
+import zlib
+
+testDict = { 'entry1':1.0, 'entry2':2.0 }
+
+with open('test.gz', 'wb') as fp:
+     fp.write(zlib.compress(pickle.dumps(testDict, pickle.HIGHEST_PROTOCOL),9))
+
+attempt = 0
+
+try:
+     attempt += 1
+     with open('test.gz', 'rb') as fp:
+       step1 = zlib.decompress(fp)
+       successDict = pickle.load(step1)
+except Exception, e:
+     print "Failed attempt:", attempt, e
+
+try:
+     attempt += 1
+     with open('test.gz', 'rb').read() as fp:
+       step1 = zlib.decompress(fp)
+       successDict = pickle.load(step1)
+except Exception, e:
+     print "Failed attempt:", attempt, e
+
+try:
+     attempt += 1
+     with open('test.gz', 'rb') as fp:
+       step1 = zlib.decompress(fp.read())
+       successDict = pickle.load(step1)
+except Exception, e:
+     print "Failed attempt:", attempt, e
+
+try:
+     attempt += 1
+     with open('test.gz', 'rb') as fp:
+       d = zlib.decompressobj()
+       step1 = fp.read()
+       step2 = d.decompress(step1)
+       step3 = pickle.load(step2)
+except Exception ,e:
+     print "Failed attempt:", attempt, e
+
+try:
+     attempt += 1
+     with open('test.gz', 'rb') as fp:
+       d = zlib.decompressobj()
+       step1 = fp.read()
+       step2 = d.decompress(step1)
+       step3 = pickle.load(step2)
+except Exception ,e:
+     print "Failed attempt:", attempt, e
+I get the following errors:
+
+Failed attempt: 1 must be string or read-only buffer, not file
+Failed attempt: 2 __exit__
+Failed attempt: 3 argument must have 'read' and 'readline' attributes
+Failed attempt: 4 argument must have 'read' and 'readline' attributes
+Failed attempt: 5 argument must have 'read' and 'readline' attributes
+Hopefully this is just some obvious (to someone else) fix that I am just missing. Thanks for your help!
+
+python zlib pickle3,898 
+Source Partager
+
+Créé 03 sept.. 12 JBWhitmore
+2 réponses
+Tri:
+
+Actif
+
+Le plus ancien
+
+Votes
+
+8
+The errors you are getting on attempts 3-5 are because you're using pickle.load instead of pickle.loads. The former expects a file-like object, rather than the byte string you're getting from the decompression calls.
+
+This will work:
+
+with open('test.gz', 'rb') as fp:
+       data = zlib.decompress(fp.read())
+       successDict = pickle.loads(data)

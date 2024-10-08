@@ -1,0 +1,3 @@
+def panier():
+		print('ajout au panier a ete reussie...')
+		print("on peut dire que cette mode de creation de dll n'existe pas")
